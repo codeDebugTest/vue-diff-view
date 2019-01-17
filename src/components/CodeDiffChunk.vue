@@ -2,14 +2,14 @@
     <div class="diff-chunk">
         <div v-if="chunk.collapse"
                 class="collapse-tip"
-                @click.once="$emit('expand', index)">
+                @click.once="$emit('expand', chunk.leftIndex, chunk.rightIndex)">
             ... 隐藏 {{chunk.lineCount}} 行，点击展开 ...
         </div>
         <div v-else class="line"
             v-for="(line, index) in chunk.lines"
             :key="index">
             <span v-if="chunk.type !== 'blank'"
-                :class="chunk.type">{{chunk.startCount + index}}</span>
+                :class="chunk.type">{{chunk.startLineNumber + index}}</span>
             <span v-else></span>
             <pre :class="chunk.type">{{line}}</pre>
         </div>
@@ -18,15 +18,12 @@
 
 <script>
 export default {
-    name: 'diff-chunk',
+    name: 'code-diff-chunk',
     props: {
         chunk: {
             type: Object,
-            default: () => {
-                return {};
-            }
-        },
-        index: Number
+            default: () => {}
+        }
     }
 };
 </script>
@@ -37,9 +34,9 @@ export default {
         display: flex;
 
         span {
-            width: 48px;
-            padding-left: 10px;
-            padding-right: 10px;
+            width: 40px;
+            padding-left: 5px;
+            padding-right: 8px;
             line-height: 22px;
             box-sizing: border-box;
             text-align: right;
@@ -47,7 +44,7 @@ export default {
         pre {
             display: inline-block;
             margin: 0;
-            padding-left: 25px;
+            padding-left: 20px;
             width: 100%;
             line-height: 22px;
             word-wrap: break-word;

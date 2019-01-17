@@ -1,19 +1,19 @@
 <template>
     <div id="app">
         <img alt="Vue logo" src="./assets/logo.png">
-        <diff-viewer :new-str="newStr" :old-str="oldStr" title="测试删除"/>
-        <diff-viewer :new-str="oldStr" :old-str="newStr" title="测试添加"/>
-        <diff-viewer :new-str="modifiedStr" :old-str="oldStr" title="测试修改"/>
+        <code-diff-viewer :new-content="newStr" :old-content="oldStr" title="测试删除"/>
+        <code-diff-viewer :new-content="oldStr" :old-content="newStr" title="测试添加"/>
+        <code-diff-viewer :new-content="modifiedStr" :old-content="oldStr" title="测试修改"/>
     </div>
 </template>
 
 <script>
-import DiffViewer from './components/DiffViewer.vue';
+import CodeDiffViewer from './components/CodeDiffViewer.vue';
 
 export default {
     name: 'app',
     components: {
-        DiffViewer
+        CodeDiffViewer
     },
     data() {
         return {
