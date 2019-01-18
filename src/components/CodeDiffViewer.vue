@@ -67,10 +67,13 @@ export default {
         diff() {
             // 修改
             if (this.newContent && this.oldContent) {
-                let diffs = diffLines(this.oldContent, this.newContent);
+                let diffs = diffLines(this.oldContent, this.newContent, {
+                    ignoreWhitespace: false
+                });
                 return diffs.map((chunk, index) => {
                     let type = chunk.added ? 'add' : (chunk.removed ? 'remove' : '');
-                    let lines = chunk.value.split('\n');
+                    // delete last element of array, because split will produce more one line.
+                    let lines = chunk.value.split('\n').slice(0, -1);
                     let lineCount = lines.length;
                     let collapse = !type && lineCount > this.collapse;
                     return {
