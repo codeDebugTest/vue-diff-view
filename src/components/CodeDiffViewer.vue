@@ -22,8 +22,8 @@
 
 <script>
 import {diffLines} from 'diff/lib/diff/line';
-import CodeChunk from './CodeDiffChunk';
-import {clone} from 'lodash';
+import CodeChunk from './CodeDiffChunk.vue';
+import clone from 'lodash/clone';
 
 export default {
     name: 'code-iff-viewer',

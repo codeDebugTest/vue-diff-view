@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-        <img alt="Vue logo" src="./assets/logo.png">
         <code-diff-viewer :new-content="newStr" :old-content="oldStr" title="测试删除"/>
         <code-diff-viewer :new-content="oldStr" :old-content="newStr" title="测试添加"/>
         <code-diff-viewer :new-content="modifiedStr" :old-content="oldStr" title="测试修改"/>
@@ -8,7 +7,7 @@
 </template>
 
 <script>
-import CodeDiffViewer from './components/CodeDiffViewer.vue';
+import CodeDiffViewer from '../src/components/CodeDiffViewer.vue';
 
 export default {
     name: 'app',
