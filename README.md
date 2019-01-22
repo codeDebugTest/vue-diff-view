@@ -2,7 +2,7 @@
 > a git diff component for Vue.js
 
 ## Usage
-``` javascript
+```vue
 <template>
     <div id="app">
         <code-diff-viewer :new-content="newStr" :old-content="oldStr" title="测试修改"/>
