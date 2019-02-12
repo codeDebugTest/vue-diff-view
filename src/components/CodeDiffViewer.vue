@@ -23,7 +23,6 @@
 <script>
 import {diffLines} from 'diff/lib/diff/line';
 import CodeChunk from './CodeDiffChunk.vue';
-import clone from 'lodash/clone';
 
 export default {
     name: 'code-iff-viewer',
@@ -144,9 +143,9 @@ export default {
                     left.lineCount = setChunkLineNumber(chunk, left.lineCount);
                     left.chunks.push(chunk);
 
-                    let clonedChunk = clone(chunk);
+                    let clonedChunk = {...chunk};
                     right.lineCount = setChunkLineNumber(clonedChunk, right.lineCount);
-                    right.chunks.push(chunk);
+                    right.chunks.push(clonedChunk);
                 }
             });
             return {left, right};
