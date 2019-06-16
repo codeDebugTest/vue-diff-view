@@ -69,17 +69,17 @@ export default {
                 let diffs = diffLines(this.oldContent, this.newContent, {
                     ignoreWhitespace: false
                 });
+                let length = diffs.length;
                 return diffs.map((chunk, index) => {
                     let type = chunk.added ? 'add' : (chunk.removed ? 'remove' : '');
                     // delete last element of array, because split will produce more one line.
-                    let lines = chunk.value.split('\n').slice(0, -1);
-                    let lineCount = lines.length;
-                    let collapse = !type && lineCount > this.collapse;
+                    let lines = chunk.value.split('\n');
+                    lines = index === length - 1 ? lines.slice(0) : lines.slice(0, -1);
                     return {
                         type,
                         lines,
-                        lineCount,
-                        collapse
+                        lineCount: lines.length,
+                        collapse: !type && lines.length > this.collapse
                     };
                 });
             }
@@ -88,6 +88,7 @@ export default {
                 let diffs = this.newContent || this.oldContent;
                 let lines = diffs.split('\n');
                 let type = !this.newContent ? 'remove' : (!this.oldContent ? 'add' : '');
+
                 return [{
                     type,
                     lines,
