@@ -59,19 +59,19 @@ export default {
             this.splitedLeft = [];
             this.splitedRight = [];
             if (this.unifiedResult.length) {
-                let {left, right} = this.splitDiffResult(this.unifiedResult);
+                const {left, right} = this.splitDiffResult(this.unifiedResult);
                 this.adaptSplitResult(left, right);
             }
         },
         diff() {
             // 修改
             if (this.newContent && this.oldContent) {
-                let diffs = diffLines(this.oldContent, this.newContent, {
+                const diffs = diffLines(this.oldContent, this.newContent, {
                     ignoreWhitespace: false
                 });
-                let length = diffs.length;
+                const length = diffs.length;
                 return diffs.map((chunk, index) => {
-                    let type = chunk.added ? 'add' : (chunk.removed ? 'remove' : '');
+                    const type = chunk.added ? 'add' : (chunk.removed ? 'remove' : '');
                     // delete last element of array, because split will produce more one line.
                     let lines = chunk.value.split('\n');
                     lines = index === length - 1 ? lines.slice(0) : lines.slice(0, -1);
@@ -85,9 +85,9 @@ export default {
             }
             else if (this.newContent || this.oldContent) {
                 // 新增 or 删除
-                let diffs = this.newContent || this.oldContent;
-                let lines = diffs.split('\n');
-                let type = !this.newContent ? 'remove' : (!this.oldContent ? 'add' : '');
+                const diffs = this.newContent || this.oldContent;
+                const lines = diffs.split('\n');
+                const type = !this.newContent ? 'remove' : (!this.oldContent ? 'add' : '');
 
                 return [{
                     type,
@@ -109,15 +109,15 @@ export default {
          * @return {Object} {left, right} 左右分离结果
         */
         splitDiffResult(diffResult) {
-            let left = {
+            const left = {
                 chunks: [],
                 lineCount: 1
             };
-            let right = {
+            const right = {
                 chunks: [],
                 lineCount: 1
             };
-            let setChunkLineNumber = (chunk, lineNumer) => {
+            const setChunkLineNumber = (chunk, lineNumer) => {
                 chunk.startLineNumber = lineNumer;
                 return lineNumer + chunk.lineCount;
             };
@@ -144,7 +144,7 @@ export default {
                     left.lineCount = setChunkLineNumber(chunk, left.lineCount);
                     left.chunks.push(chunk);
 
-                    let clonedChunk = {...chunk};
+                    const clonedChunk = {...chunk};
                     right.lineCount = setChunkLineNumber(clonedChunk, right.lineCount);
                     right.chunks.push(clonedChunk);
                 }
@@ -153,7 +153,7 @@ export default {
         },
         adaptSplitResult(left, right) {
             left.chunks.forEach((leftChunk, index) => {
-                let rightChunk = right.chunks[index];
+                const rightChunk = right.chunks[index];
                 if (leftChunk.collapse && rightChunk.collapse) {
                     // 记录下左右栏chunk index; 点击展开时，通过此index定位chunk进行展开。
                     leftChunk.leftIndex = rightChunk.leftIndex = this.splitedLeft.length;
@@ -165,7 +165,7 @@ export default {
 
                 // 修改的行数不一致时，补充空白块。例如：左栏删除 3行，右栏添加5行代码。则左栏需补充 2行空白，进行对齐。
                 if (leftChunk.type === 'remove' && rightChunk.type === 'add') {
-                    let count = leftChunk.lineCount - rightChunk.lineCount;
+                    const count = leftChunk.lineCount - rightChunk.lineCount;
                     if (count < 0) {
                         this.splitedLeft.push(this.createBlankChunk(Math.abs(count)));
                     }
@@ -192,7 +192,7 @@ export default {
             }
             index = type === 'remove' ? index + 1 : index - 1;
 
-            let chunk = this.unifiedResult[index];
+            const chunk = this.unifiedResult[index];
             return !chunk || !chunk.type;
         },
 

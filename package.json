@@ -5,8 +5,7 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "dev": "npm run serve",
-    "build-demo": "vue-cli-service build",
-    "build": "cross-env NODE_ENV=production rollup -c",
+    "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
   "author": "liuye (liuye6y@gmail.com)",
@@ -15,23 +14,27 @@
     "diff": "^3.5.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.7.0",
-    "@vue/cli-plugin-eslint": "^3.7.0",
-    "@vue/cli-service": "^3.7.0",
-    "@vue/eslint-config-standard": "^4.0.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0",
+    "@vue/cli-plugin-babel": "^4.2.0",
+    "@vue/cli-plugin-eslint": "^4.2.0",
+    "@vue/cli-service": "^4.2.0",
+    "@vue/eslint-config-standard": "^5.1.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.8.0",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "eslint-plugin-vue": "^6.1.2",
     "less": "^3.9.0",
     "less-loader": "^4.1.0",
-    "rollup": "^1.1.0",
-    "rollup-plugin-buble": "^0.19.6",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^4.0.0",
-    "rollup-plugin-terser": "^4.0.2",
-    "rollup-plugin-vue": "^4.6.1",
-    "vue": "^2.5.21",
-    "vue-template-compiler": "^2.5.17",
+    "rollup": "^2.2.0",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-terser": "^5.3.0",
+    "vue": "^2.6.11",
+    "vue-template-compiler": "^2.6.11",
     "webpack-dev-server": ">=3.1.11"
+  },
+  "peerDependencies": {
+    "vue": "^2.6.11"
   }
 }
