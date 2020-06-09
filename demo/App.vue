@@ -1,14 +1,14 @@
 <template>
     <div id="app">
-        <code-diff-viewer :new-content="newStr" :old-content="oldStr" title="测试删除"/>
-        <code-diff-viewer :new-content="oldStr" :old-content="newStr" title="测试添加"/>
-        <code-diff-viewer :new-content="modifiedStr" :old-content="oldStr" title="测试修改"/>
         <code-diff-viewer v-for="changedFile in changedFiles"
             :key="changedFile.fileName"
             :new-content="changedFile.current"
             :old-content="changedFile.last"
             :title="changedFile.fileName"
         />
+        <code-diff-viewer :new-content="newStr" :old-content="oldStr" title="测试删除"/>
+        <code-diff-viewer :new-content="oldStr" :old-content="newStr" title="测试添加"/>
+        <code-diff-viewer :new-content="modifiedStr" :old-content="oldStr" title="测试修改"/>
     </div>
 </template>
 
