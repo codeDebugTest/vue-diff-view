@@ -30,13 +30,13 @@ export default {
 ## DEMO
 
 ### overview
-![add delete file](https://github.com/codeDebugTest/vue-diff-view/raw/master/screenshots/add_delete.png)
+![code diff](https://github.com/codeDebugTest/vue-diff-view/blob/master/screenshots/code_diff.png);
 
 ![modify file](https://github.com/codeDebugTest/vue-diff-view/raw/master/screenshots/modify.png)
 
 ### run demo case
 ```command line
-   npm run serve
+npm run serve
 ```
 
 ## todo
